@@ -67,9 +67,13 @@ input,textarea,select{padding:12px 13px;border:1px solid rgba(177,210,183,.2);bo
 .menu-toggle{display:none;flex:0 0 42px;width:42px;height:42px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#0b2119;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}.menu-toggle span{display:block;width:19px;height:2px;border-radius:2px;background:#e8c477}.drawer-backdrop{display:none}.drawer-backdrop.open{display:block;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.62);backdrop-filter:blur(3px)}.mobile-drawer{position:absolute;inset:0 auto 0 0;width:min(310px,84vw);overflow-y:auto;background:#081d14;border-right:1px solid rgba(220,181,104,.24);padding:25px 18px 28px;box-shadow:18px 0 55px rgba(0,0,0,.4);animation:drawerIn .2s ease-out}.drawer-profile{display:flex;align-items:center;flex-direction:column;text-align:center;padding:12px 8px 23px;border-bottom:1px solid var(--line);gap:7px}.drawer-avatar{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:31px;color:#e8c477;background:linear-gradient(145deg,#173c29,#0c2419);border:1px solid rgba(220,181,104,.55);box-shadow:0 8px 24px rgba(0,0,0,.22)}.drawer-role{font-size:9px;letter-spacing:.16em;font-weight:900;color:#b8dfc2;border:1px solid rgba(143,197,160,.35);border-radius:20px;padding:5px 12px;background:rgba(57,118,76,.16)}.drawer-profile strong{font-size:16px;color:#f2f3e9;overflow-wrap:anywhere}.drawer-profile small{font-size:11px;color:var(--muted);overflow-wrap:anywhere}.drawer-caption{font-size:10px;letter-spacing:.16em;color:#86a895;font-weight:800;padding:19px 11px 8px}.drawer-nav{display:grid;gap:5px}.drawer-nav .navlink{width:100%;text-align:left;min-height:45px;padding:11px 13px;border-radius:11px}.drawer-nav .nav-group-title{padding:13px 12px 3px}.drawer-logout{width:100%;margin-top:18px;padding:12px;border:1px solid rgba(255,130,115,.24);border-radius:11px;background:rgba(110,37,30,.16);color:#ffc1b6;font-weight:700}@keyframes drawerIn{from{transform:translateX(-18px);opacity:.6}to{transform:translateX(0);opacity:1}}
 @media(max-width:800px){.menu-toggle{display:flex}.topbar{align-items:center!important;gap:10px}.topbar>div{flex:1;min-width:0}.topbar>span{display:none}.mobile-nav{display:none!important}.main{padding:18px 14px 28px!important}}
 
-/* Compact hamburger button width */
-.menu-toggle{width:34px!important;flex-basis:34px!important;min-width:34px!important;padding-left:7px!important;padding-right:7px!important}
-.menu-toggle span{width:17px!important}
+/* Restore original hamburger size; compact the drawer menu items */
+.menu-toggle{width:42px!important;flex-basis:42px!important;min-width:42px!important;padding:10px!important}
+.menu-toggle span{width:19px!important}
+.drawer-nav{gap:3px!important}
+.drawer-nav .navlink{min-height:36px!important;padding:7px 10px!important;font-size:12px!important;line-height:1.2!important}
+.drawer-nav .nav-group-title{padding:8px 10px 2px!important;font-size:9px!important}
+.drawer-logout{margin-top:10px!important;padding:9px!important;font-size:12px!important}
 /* Unified hamburger navigation on desktop and mobile */
 .sidebar{display:none!important}
 .main{margin-left:0!important;max-width:none!important;width:100%;padding:24px!important}
