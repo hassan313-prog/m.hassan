@@ -66,6 +66,18 @@ input,textarea,select{padding:12px 13px;border:1px solid rgba(177,210,183,.2);bo
 /* Mobile slide-out member sidebar */
 .menu-toggle{display:none;flex:0 0 42px;width:42px;height:42px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#0b2119;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}.menu-toggle span{display:block;width:19px;height:2px;border-radius:2px;background:#e8c477}.drawer-backdrop{display:none}.drawer-backdrop.open{display:block;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.62);backdrop-filter:blur(3px)}.mobile-drawer{position:absolute;inset:0 auto 0 0;width:min(310px,84vw);overflow-y:auto;background:#081d14;border-right:1px solid rgba(220,181,104,.24);padding:25px 18px 28px;box-shadow:18px 0 55px rgba(0,0,0,.4);animation:drawerIn .2s ease-out}.drawer-profile{display:flex;align-items:center;flex-direction:column;text-align:center;padding:12px 8px 23px;border-bottom:1px solid var(--line);gap:7px}.drawer-avatar{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:31px;color:#e8c477;background:linear-gradient(145deg,#173c29,#0c2419);border:1px solid rgba(220,181,104,.55);box-shadow:0 8px 24px rgba(0,0,0,.22)}.drawer-role{font-size:9px;letter-spacing:.16em;font-weight:900;color:#b8dfc2;border:1px solid rgba(143,197,160,.35);border-radius:20px;padding:5px 12px;background:rgba(57,118,76,.16)}.drawer-profile strong{font-size:16px;color:#f2f3e9;overflow-wrap:anywhere}.drawer-profile small{font-size:11px;color:var(--muted);overflow-wrap:anywhere}.drawer-caption{font-size:10px;letter-spacing:.16em;color:#86a895;font-weight:800;padding:19px 11px 8px}.drawer-nav{display:grid;gap:5px}.drawer-nav .navlink{width:100%;text-align:left;min-height:45px;padding:11px 13px;border-radius:11px}.drawer-nav .nav-group-title{padding:13px 12px 3px}.drawer-logout{width:100%;margin-top:18px;padding:12px;border:1px solid rgba(255,130,115,.24);border-radius:11px;background:rgba(110,37,30,.16);color:#ffc1b6;font-weight:700}@keyframes drawerIn{from{transform:translateX(-18px);opacity:.6}to{transform:translateX(0);opacity:1}}
 @media(max-width:800px){.menu-toggle{display:flex}.topbar{align-items:center!important;gap:10px}.topbar>div{flex:1;min-width:0}.topbar>span{display:none}.mobile-nav{display:none!important}.main{padding:18px 14px 28px!important}}
+
+/* Unified hamburger navigation on desktop and mobile */
+.sidebar{display:none!important}
+.main{margin-left:0!important;max-width:none!important;width:100%;padding:24px!important}
+.menu-toggle{display:flex!important;flex:0 0 42px}
+.mobile-nav{display:none!important}
+.drawer-backdrop.open{display:block!important}
+.mobile-drawer{width:min(330px,88vw)!important}
+.topbar{justify-content:flex-start!important}
+.topbar>div{flex:1;min-width:0}
+.topbar>span{display:none!important}
+@media(max-width:800px){.main{padding:18px 14px 28px!important}.topbar{gap:10px!important}}
 </style></head><body><script>
 (()=>{const show=(label,err)=>{const app=document.getElementById('app');if(!app)return;const pre=document.createElement('pre');pre.style.cssText='color:#fff;background:#102b1e;padding:18px;margin:16px;border:1px solid #dcb568;border-radius:12px;white-space:pre-wrap;overflow-wrap:anywhere;font:13px monospace';pre.textContent=label+': '+(err&& (err.stack||err.message)?(err.stack||err.message):String(err));app.replaceChildren(pre)};window.addEventListener('error',e=>show('SolarNova JavaScript error',e.error||e.message||'unknown'));window.addEventListener('unhandledrejection',e=>show('SolarNova startup promise error',e.reason||'unknown'));})();
 </script><div id="app"></div><script>
