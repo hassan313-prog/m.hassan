@@ -292,7 +292,7 @@ return '<section class="solar-plans-intro"><span class="invest-eyebrow">SOLARNOV
 function memberActivePlanPage(){
 const rows=solarPurchases.filter(p=>p.status==='completed').map(p=>{
 const duration=String(p.duration_text||'').trim();
-const durationMatch=duration.match(/(\\d+(?:\\.\\d+)?)\\s*(days?|d|weeks?|w|months?|mos?|years?|yrs?|y)\\b/i);
+const durationMatch=duration.match(/(\d+(?:\.\d+)?)\s*(days?|d|weeks?|w|months?|mos?|years?|yrs?|y)\b/i);
 const started=new Date(p.created_at);
 let expiry=null;
 if(durationMatch&&!Number.isNaN(started.getTime())){
