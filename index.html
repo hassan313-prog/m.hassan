@@ -295,6 +295,46 @@ input,textarea,select{padding:12px 13px;border:1px solid rgba(177,210,183,.2);bo
   border:1px solid #e6bd72!important;
   box-shadow:0 7px 18px rgba(215,169,87,.14)!important;
 }
+</style><style id="sn-login-gold-focus-and-large-dashboard-arrows">
+/* Login input focus uses SolarNova Gold instead of green */
+.sn-login-screen .sn-input-wrap input:focus{
+  border-color:#e6bd72!important;
+  box-shadow:0 0 0 2px rgba(230,189,114,.18)!important;
+}
+/* Large, clearly visible dashboard arrows; buttons keep their existing data-route click actions */
+#app .wallet-card .wallet-action{
+  flex:0 0 60px!important;
+  width:60px!important;
+  height:60px!important;
+  padding:0!important;
+  display:grid!important;
+  place-items:center!important;
+  font-size:48px!important;
+  font-weight:600!important;
+  line-height:1!important;
+  color:#e6bd72!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:10px!important;
+  box-shadow:none!important;
+  cursor:pointer!important;
+}
+#app .wallet-card .wallet-action:hover,
+#app .wallet-card .wallet-action:focus-visible{
+  color:#f4d99f!important;
+  background:rgba(230,189,114,.10)!important;
+  box-shadow:none!important;
+  transform:translateX(3px)!important;
+}
+@media(max-width:800px){
+  #app .wallet-card .wallet-action{
+    flex:0 0 60px!important;
+    width:60px!important;
+    height:60px!important;
+    padding:0!important;
+    font-size:46px!important;
+  }
+}
 </style></head><body><script>
 (()=>{try{const referral=new URLSearchParams(location.search).get('ref');if(referral){localStorage.setItem('referrer',referral.trim());}}catch(e){console.warn('[SolarNova] Referral code could not be saved locally.');}try{window.__snSavedScroll=Number(sessionStorage.getItem('sn-scroll-y')||0);window.addEventListener('pagehide',()=>sessionStorage.setItem('sn-scroll-y',String(window.scrollY||0)));}catch(e){window.__snSavedScroll=0;}})();
 </script><script>
