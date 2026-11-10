@@ -311,9 +311,12 @@ if(!/^\+92\d{10}$/.test(mobile))throw new Error('Enter a valid Pakistan mobile n
 if(!country||country.length<2)throw new Error('Please enter a valid country.');
 const {data,error}=await db.auth.signUp({email,password,options:{data:{display_name:name,mobile_number:mobile,country}}});
 if(error)throw error;
-if(data.session)await db.auth.signOut();
-session=null;
-auth('login','Account created successfully. Check your email for a confirmation link if required. You can log in once your account is ready.');
+if(!data.user)throw new Error('Supabase did not return a new account. Please try again.');
+if(!data.session)throw new Error('Email confirmation is still enabled in Supabase. Turn OFF Confirm Email, then register again.');
+await db.auth.signOut();
+session=null;profile=null;
+window.alert('Account Created Successfully please login to access your account');
+auth('login');
 }else if(resetMode){
 const {error}=await db.auth.resetPasswordForEmail(email,{redirectTo:location.origin});if(error)throw error;
 auth('login','If this email is registered, a password reset link has been sent.');
