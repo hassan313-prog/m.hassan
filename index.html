@@ -284,6 +284,17 @@ input,textarea,select{padding:12px 13px;border:1px solid rgba(177,210,183,.2);bo
 #app .sn-deposit-container{background:linear-gradient(145deg,rgba(20,49,33,.96),rgba(9,30,19,.98))!important;border:1px solid rgba(177,210,183,.17)!important;border-top:1px solid rgba(177,210,183,.17)!important;box-shadow:var(--shadow)!important}
 #app .sn-deposit-container .sn-deposit-title{color:var(--white)!important}
 #app .sn-deposit-container .withdraw-section-title:first-of-type{margin-top:0}
+</style><style id="sn-all-popup-buttons-gold">
+/* Keep every custom popup button in SolarNova on the same Gold theme */
+.sn-plan-modal button,
+.sn-purchase-success-backdrop button,
+.sn-auth-success-overlay [role="dialog"] button,
+#sn-exit-confirm [role="dialog"] button{
+  background:linear-gradient(135deg,#f0d18f,#d7a957)!important;
+  color:#15251d!important;
+  border:1px solid #e6bd72!important;
+  box-shadow:0 7px 18px rgba(215,169,87,.14)!important;
+}
 </style></head><body><script>
 (()=>{try{const referral=new URLSearchParams(location.search).get('ref');if(referral){localStorage.setItem('referrer',referral.trim());}}catch(e){console.warn('[SolarNova] Referral code could not be saved locally.');}try{window.__snSavedScroll=Number(sessionStorage.getItem('sn-scroll-y')||0);window.addEventListener('pagehide',()=>sessionStorage.setItem('sn-scroll-y',String(window.scrollY||0)));}catch(e){window.__snSavedScroll=0;}})();
 </script><script>
