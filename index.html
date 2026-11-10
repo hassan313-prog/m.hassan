@@ -634,4 +634,33 @@ const paint=node=>{if(node.nodeType===Node.TEXT_NODE){const p=node.parentElement
 if(node.nodeType===Node.ELEMENT_NODE){if(node.matches('script,style,textarea,input,select,.payment-gold'))return;[...node.childNodes].forEach(paint);}};
 paint(root);new MutationObserver(records=>records.forEach(r=>r.addedNodes.forEach(paint))).observe(root,{childList:true,subtree:true});
 })();
-</script></body></html>
+</script><style>
+/* Change green-colored text only; preserve buttons and icon colors */
+#app .sn-green-text-gold{color:#D4AF37!important}
+</style>
+<script>
+(()=> {
+ const excluded = el => !!el.closest('button,svg,input,textarea,select,[role="img"],.sn-green-text-gold') ||
+   /icon|symbol|tick|check|sun|avatar|mark/i.test(typeof el.className==='string'?el.className:'');
+ const scan = node => {
+   if(node.nodeType===Node.TEXT_NODE) node=node.parentElement;
+   if(!(node instanceof Element)) return;
+   const nodes=[node,...node.querySelectorAll('*')];
+   for(const el of nodes){
+     if(excluded(el)) continue;
+     const c=getComputedStyle(el).color.match(/\d+(?:\.\d+)?/g);
+     if(!c||c.length<3) continue;
+     const [r,g,b]=c.map(Number);
+     if(g>r*1.08 && g>b*1.02) el.classList.add('sn-green-text-gold');
+   }
+ };
+ const start=()=>{const root=document.getElementById('app')||document.body;scan(root);
+   new MutationObserver(records=>records.forEach(rec=>{
+     if(rec.type==='childList') rec.addedNodes.forEach(scan);
+     else scan(rec.target);
+   })).observe(root,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['class','style']});
+ };
+ if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',start,{once:true}); else start();
+})();
+</script>
+</body></html>
