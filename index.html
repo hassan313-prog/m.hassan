@@ -822,4 +822,29 @@ window.__snLogin=async(email,password)=>{
  }finally{clearTimeout(timeout);}
 };
 db.auth.onAuthStateChange((_e,s)=>{if(s){session=s;}else if(session){session=null;profile=null;snSetPath('/login',true);auth('login');}});db.auth.getSession().then(({data})=>{session=data.session;if(session)loadProfile();else{snSetPath('/login',true);auth('login');}});})();}).catch((err)=>{const msg=document.getElementById('sn-boot-msg');if(msg)msg.textContent='Startup error: '+(err&&err.message?err.message:String(err));document.getElementById("app").innerHTML="<div style=\"padding:24px;color:#fff\">SolarNova could not load its secure connection. Please refresh in a moment.</div>";});
-</script></body></html>
+</script>
+<style id="sn-wallet-selection-contrast-fix">
+/* Wallet choice buttons must not inherit the blanket gold popup-button theme */
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option:not(.is-selected){
+ background:rgba(7,24,16,.96)!important;
+ background-image:none!important;
+ color:#f5f2e9!important;
+ border:1px solid rgba(177,210,183,.22)!important;
+ box-shadow:none!important;
+}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option:not(.is-selected) .sn-wallet-name{color:#f5f2e9!important}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option:not(.is-selected) strong{color:#f1d18d!important}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option:not(.is-selected) small{color:#a9b9ad!important}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option.is-selected{
+ background:linear-gradient(135deg,#f0d18f,#d7a957)!important;
+ background-image:linear-gradient(135deg,#f0d18f,#d7a957)!important;
+ color:#15251d!important;
+ border:2px solid #e6bd72!important;
+ box-shadow:0 7px 18px rgba(215,169,87,.18)!important;
+}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option.is-selected .sn-wallet-name,
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option.is-selected strong{color:#15251d!important}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option.is-selected small{color:#435a49!important}
+#sn-plan-modal .sn-wallet-grid>.sn-wallet-option.is-selected .sn-wallet-icon{background:rgba(21,37,29,.1)!important;color:#15251d!important}
+</style>
+</body></html>
