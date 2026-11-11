@@ -699,7 +699,7 @@ if(wf)wf.onsubmit=async e=>{
  const limits={'JazzCash':[0.10,5000],'EasyPaisa':[0.10,5000],'Bank Transfer':[1,5000],'USDT - BEP20':[10,10000],'USDT - SOL':[10,10000],'Tron - TRX':[10,10000]};
  const limit=limits[payment_method];
  try{
-  if(!payment_method||payment_method!==selectedWithdrawalMethod)throw new Error('Please select a withdrawal method.');
+  if(!payment_method||!limits[payment_method])throw new Error('Please select a withdrawal method.');
   if(!limit||!Number.isFinite(displayAmount)||!Number.isFinite(amount)||amount<limit[0]-0.000001||amount>limit[1]+0.000001)throw new Error('Amount must be between '+currencyLimit(limit?limit[0]:1,limit?limit[1]:10000)+' for '+payment_method+'.');
   if(account_title.length<2||account_number.length<5)throw new Error('Check the account name and account number / wallet address.');
   if(amount>earningAvailable())throw new Error('Insufficient available balance. Available: '+money(earningAvailable()));
