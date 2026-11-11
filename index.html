@@ -414,6 +414,15 @@ body{display:block!important}
 @media(max-width:800px){
   #app .main{padding:18px 11px 105px!important}
 }
+
+/* Login and registration screens must also use the full viewport width */
+#app .sn-login-screen{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+}
 </style>
 </head><body><script>
 (()=>{try{const referral=new URLSearchParams(location.search).get('ref');if(referral){localStorage.setItem('referrer',referral.trim());}}catch(e){console.warn('[SolarNova] Referral code could not be saved locally.');}try{window.__snSavedScroll=Number(sessionStorage.getItem('sn-scroll-y')||0);window.addEventListener('pagehide',()=>sessionStorage.setItem('sn-scroll-y',String(window.scrollY||0)));}catch(e){window.__snSavedScroll=0;}})();
