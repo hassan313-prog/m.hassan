@@ -289,6 +289,14 @@ input,textarea,select{padding:12px 13px;border:1px solid rgba(177,210,183,.2);bo
   .main{width:auto;max-width:none}
 }
 
+
+/* FULL WIDTH ON TABLET AND DESKTOP TOO */
+html,body,#app,.app-shell{width:100%;max-width:none}
+.main{box-sizing:border-box;width:calc(100% - 258px)!important;max-width:none!important;margin-left:258px!important;padding-left:12px!important;padding-right:12px!important}
+@media(max-width:800px){
+  .main{width:100%!important;max-width:none!important;margin-left:0!important;padding-left:11px!important;padding-right:11px!important}
+}
+
 </style><style id="sn-auth-success-styles">
 .sn-auth-success-overlay{position:fixed;inset:0;z-index:1000000;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(2,10,6,.78);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
 .sn-auth-success-card{width:min(100%,390px);padding:30px 24px 24px;border:1px solid rgba(143,255,0,.34);border-radius:24px;background:linear-gradient(155deg,#143b27 0%,#0a1d13 100%);box-shadow:0 28px 90px rgba(0,0,0,.65);text-align:center;color:#f4fff5;animation:snAuthSuccessIn .22s ease-out}
