@@ -340,21 +340,23 @@ input,textarea,select{padding:12px 13px;border:1px solid rgba(177,210,183,.2);bo
 }
 </style>
 <style>
-/* PIXEL 7 STANDARD — SAME MOBILE LAYOUT ON EVERY DEVICE */
+/* RESPONSIVE MOBILE LAYOUT — AUTO FITS EVERY PHONE */
 body{background:#07150F;margin:0;display:flex;justify-content:center}
-#app{width:100%;max-width:412px;min-height:100vh;margin:0 auto;padding:16px;background:#0A2E1F;box-sizing:border-box}
-#app .app-shell{min-height:calc(100vh - 32px)}
+#app{width:100%;max-width:480px;min-height:100vh;margin:0 auto;padding:clamp(10px,3vw,16px);background:#0A2E1F;box-sizing:border-box}
+#app .app-shell{min-height:calc(100vh - 2 * clamp(10px,3vw,16px))}
 #app .sidebar{display:none}
 #app .main{margin:0;padding:18px 0 95px;max-width:none}
-#app .mobile-nav{display:flex;left:max(0px,calc((100vw - 412px)/2));right:max(0px,calc((100vw - 412px)/2))}
+#app .mobile-nav{display:flex;left:max(0px,calc((100vw - 480px)/2));right:max(0px,calc((100vw - 480px)/2))}
 #app .grid,#app .dashboard-grid,#app .form-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 #app .full{grid-column:auto}
-#app .wallet-card{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#app .wallet-card{width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:clamp(14px,4vw,20px);border-radius:clamp(14px,4vw,20px);box-sizing:border-box}
 #app .wallet-copy{min-width:0;flex:1}
-#app .wallet-value{font-size:22px;font-weight:800;white-space:nowrap}
-#app .wallet-action{width:30px;height:30px;flex:0 0 30px;min-width:30px;border-radius:50%;background:linear-gradient(180deg,#FFE9A8,#E9C46A);color:#1A2E1F;display:flex;align-items:center;justify-content:center;font-size:23px;line-height:1;padding:0}
-#app .login-wrap{min-height:calc(100vh - 32px);padding:0}
+#app .wallet-value{font-size:clamp(20px,6vw,26px);font-weight:800;white-space:nowrap}
+#app .wallet-action{width:clamp(28px,8vw,34px);height:clamp(28px,8vw,34px);flex:0 0 clamp(28px,8vw,34px);min-width:clamp(28px,8vw,34px);border-radius:50%;background:linear-gradient(180deg,#FFE9A8,#E9C46A);color:#1A2E1F;display:flex;align-items:center;justify-content:center;font-size:23px;line-height:1;padding:0}
+#app .login-wrap{min-height:calc(100vh - 2 * clamp(10px,3vw,16px));padding:0}
 #app .login-card{width:100%;max-width:100%}
+@media(max-width:400px){#app .grid,#app .dashboard-grid,#app .form-grid{gap:12px}}
+@media(min-width:401px){#app .grid,#app .dashboard-grid,#app .form-grid{gap:16px}}
 </style>
 </head><body><script>
 (()=>{try{const referral=new URLSearchParams(location.search).get('ref');if(referral){localStorage.setItem('referrer',referral.trim());}}catch(e){console.warn('[SolarNova] Referral code could not be saved locally.');}try{window.__snSavedScroll=Number(sessionStorage.getItem('sn-scroll-y')||0);window.addEventListener('pagehide',()=>sessionStorage.setItem('sn-scroll-y',String(window.scrollY||0)));}catch(e){window.__snSavedScroll=0;}})();
