@@ -548,9 +548,12 @@ async function fetchData(){
   db.from('earning_transactions').select('*').order('created_at',{ascending:false}),
   db.from('earning_settings').select('*').eq('id',true).maybeSingle(),
   profile.role==='admin'?db.from('profiles').select('id,display_name,email,role,is_active,created_at,mobile_number,referred_by').order('created_at',{ascending:false}):Promise.resolve({data:[],error:null}),
-  db.rpc('get_member_earnings_leaderboard')
+  db.rpc('get_member_earnings_leaderboard'),
+  db.from('site_settings').select('*').eq('id',true).maybeSingle(),
+  profile.role==='admin'?db.from('admin_balance_adjustments').select('*'):db.from('admin_balance_adjustments').select('*').eq('user_id',session.user.id),
+  profile.role==='admin'?db.from('referral_codes').select('*'):Promise.resolve({data:[],error:null})
  ];
- const [sl,s,sPlans,ps,sub,dep,wr,sp,et,es,m,lb]=await Promise.all(jobs);
+ const [sl,s,sPlans,ps,sub,dep,wr,sp,et,es,m,lb,ss,ba,rc]=await Promise.all(jobs);
  if(profile.role==='member'){const [rs,dr]=await Promise.all([db.from('referral_stats').select('*').eq('user_id',session.user.id).maybeSingle(),db.rpc('get_my_referrals')]);if(!rs.error&&rs.data)memberReferralStats=rs.data;if(!dr.error)memberDirectReferrals=dr.data||[];}
  if(!sl.error)solarLevels=sl.data||[];
  if(!s.error)services=s.data||[];
@@ -564,6 +567,9 @@ async function fetchData(){
  if(!es.error&&es.data)earningSettings=es.data;
  if(!m.error)members=m.data||[];
  if(!lb.error)memberLeaderboard=lb.data||[];
+ if(!ss.error&&ss.data)siteSettings=ss.data;
+ if(!ba.error)balanceAdjustments=ba.data||[];
+ if(!rc.error)referralCodes=rc.data||[];
  if(profile.role==='member')db.rpc('generate_daily_plan_earnings').then(()=>{}).catch(()=>{});
 }
 const items=()=>profile.role==='admin'?[['overview','▦','Dashboard'],['members','♙','Users'],['deposits','⇄','Deposit'],['withdrawals','↗','Withdraw'],['plans','▤','Plans'],['referral','♧','Referral'],['settings','⚙','Settings']]:[['home','🏠','Dashboard','MAIN'],['plans','📦','Plans','MAIN'],['active-plan','🗂️','My Active Plan','MAIN'],['transactions','🧾','Transactions','MAIN'],['deposit','💳','Deposit','WALLET'],['withdraw','💸','Withdraw','WALLET'],['earnings','💰','My Earnings','WALLET'],['referrals','👥','Referrals','NETWORK'],['referral-plans','🏅','My Ranks','NETWORK'],['ranks','🏆','Leaderboard','NETWORK'],['profile','👤','Profile','ACCOUNT'],['support','🎧','Support','ACCOUNT']];
