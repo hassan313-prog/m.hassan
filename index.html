@@ -580,10 +580,10 @@ const cards=records.map(x=>'<article class="service transaction-record" data-tra
 return '<div class="grid"><div class="stat"><strong>'+money(totalDeposited)+'</strong><span>Total Deposited · Verified</span></div><div class="stat"><strong>'+money(totalWithdrawn)+'</strong><span>Total Withdrawn · Paid</span></div></div><div class="panel section"><div class="deposit-heading"><div><h3>Transaction History</h3><p class="muted small">Deposit aur withdrawal ki tamam requests yahan show hongi. Plan purchase history yahan include nahi hoti.</p></div></div><div class="sn-tx-filter-wrap"><span>Filter transactions</span><div class="sn-tx-filter" role="group" aria-label="Filter transactions"><button type="button" class="active" data-transaction-filter="all">All</button><button type="button" data-transaction-filter="deposit">Deposits</button><button type="button" data-transaction-filter="withdrawal">Withdrawals</button></div></div><div class="service-list" id="transactionRecords">'+(cards||'<div class="empty">No deposit or withdrawal transactions yet.</div>')+'</div></div>';
 }
 function memberDepositPage(){
-const enabled=paymentSettings.filter(x=>x.is_enabled);const fiatNames=['JazzCash','EasyPaisa','Easypaisa','Bank Transfer','Paytm','PhonePe'];
+const enabled=paymentSettings.filter(x=>x.is_enabled);const fiatOrder=['PhonePe','Paytm','EasyPaisa','JazzCash','Bank Transfer'];const cryptoOrder=['Tron · TRX','Bitcoin · BTC','BNB Smart Chain · BNB'];
 const methodGroups=[
- {title:'FIAT PAYMENTS',methods:enabled.filter(m=>fiatNames.includes(String(m.method||''))),kind:'fiat'},
- {title:'CRYPTO PAYMENTS',methods:enabled.filter(m=>/^(Tron|Bitcoin|BNB Smart Chain) ·/.test(String(m.method||''))),kind:'crypto'}
+ {title:'FIAT PAYMENTS',methods:fiatOrder.map(name=>enabled.find(m=>String(m.method||'').toLowerCase()===name.toLowerCase())).filter(Boolean),kind:'fiat'},
+ {title:'CRYPTO PAYMENTS',methods:cryptoOrder.map(name=>enabled.find(m=>String(m.method||'').toLowerCase()===name.toLowerCase())).filter(Boolean),kind:'crypto'}
 ].filter(g=>g.methods.length);
 const icons={'JazzCash':['💳','red'],'EasyPaisa':['💳','green'],'Bank Transfer':['🏦','blue'],'Paytm':['🇮🇳','blue'],'PhonePe':['🇮🇳','purple']};
 const cryptoIcon=m=>m.startsWith('Tron ·')?['🔻','red']:m.startsWith('Bitcoin ·')?['₿','yellow']:['🔶','yellow'];
